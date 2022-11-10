@@ -155,7 +155,8 @@ class Zlapp(Fudan):
 
             print("◉上一次提交地址为:", position['formattedAddress'])
             # print("◉上一次提交GPS为", position["position"])
-        # print(last_info)
+        
+        print(f'debugger: {last_info["d"]["oldInfo"]}')
         
         # 改为上海时区
         os.environ['TZ'] = 'Asia/Shanghai'
@@ -236,16 +237,16 @@ class Zlapp(Fudan):
             else:
                 self.last_info.update(
                     {
-                        "tw": "13",
-                        "province": province,
-                        "city": city,
-                        "area": " ".join((province, city, district)),
+                        # "tw": "13",
+                        # "province": province,
+                        # "city": city,
+                        # "area": " ".join((province, city, district)),
                         #"sfzx": "1",  # 是否在校
                         #"fxyy": "",  # 返校原因
                         "code": code,
                     }
                 )
-            # print(self.last_info)
+            print(f'info: debugger: {self.last_info}')
             save = self.session.post(
                 'https://zlapp.fudan.edu.cn/ncov/wap/fudan/save',
                 data=self.last_info,
